@@ -1,7 +1,7 @@
 /** @format */
 
 import NextAuth from "next-auth";
-import Github from "next-auth/providers/github";
+import GitHub from "next-auth/providers/github";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import db from "@/db";
 
@@ -20,7 +20,7 @@ export const {
 } = NextAuth({
   adapter: PrismaAdapter(db),
   providers: [
-    Github({
+    GitHub({
       clientId: GITHUB_CLIENT_ID,
       clientSecret: GITHUB_CLIENT_SECRET,
     }),
