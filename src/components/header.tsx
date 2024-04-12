@@ -1,3 +1,4 @@
+import { signOut } from "@/actions";
 import { signIn } from "@/actions/sign-in";
 import { auth } from "@/auth";
 import {
@@ -8,6 +9,9 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
   divider,
 } from "@nextui-org/react";
 import Image from "next/image";
@@ -18,12 +22,31 @@ export default async function Header() {
   const session = await auth();
 
   if (session?.user) {
-    authContent = <Avatar src={session.user.image || ""} />;
+    authContent = (
+      <Popover placement="left">
+        <PopoverTrigger>
+          <Avatar src={session.user.image || ""} />
+        </PopoverTrigger>
+        <PopoverContent>
+          <form action={signOut} className="p-4">
+            <Button type="submit" color="primary" variant="flat">
+              Sign Out
+            </Button>
+          </form>
+        </PopoverContent>
+      </Popover>
+    );
   } else {
     authContent = (
-      <form action={signIn}>
-        <Button type="submit">Sign In</Button>
-      </form>
+      <>
+        <NavbarItem>
+          <form action={signIn}>
+            <Button type="submit" color="secondary" variant="bordered">
+              Sign In
+            </Button>
+          </form>
+        </NavbarItem>
+      </>
     );
   }
   return (
@@ -39,9 +62,7 @@ export default async function Header() {
             <Input />
           </NavbarItem>
         </NavbarContent>
-        <NavbarContent justify="end">
-          <NavbarItem>{authContent}</NavbarItem>
-        </NavbarContent>
+        <NavbarContent justify="end">{authContent}</NavbarContent>
       </Navbar>
     </div>
   );
