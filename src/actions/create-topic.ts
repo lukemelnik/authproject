@@ -12,12 +12,12 @@ const createTopicSchema = z.object({
   description: z.string().min(10),
 });
 
-type CreateTopicFormState = {
+interface CreateTopicFormState {
   errors: {
-    name?: string;
-    description?: string;
+    name?: string[];
+    description?: string[];
   };
-};
+}
 
 export async function createTopic(
   formState: CreateTopicFormState,
