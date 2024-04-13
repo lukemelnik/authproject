@@ -6,15 +6,10 @@ import { useSession } from "next-auth/react";
 import {
   Avatar,
   Button,
-  Input,
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
   NavbarItem,
   Popover,
   PopoverContent,
   PopoverTrigger,
-  divider,
 } from "@nextui-org/react";
 
 export default function HeaderAuth() {

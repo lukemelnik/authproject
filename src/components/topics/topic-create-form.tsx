@@ -8,6 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
   Textarea,
+  divider,
 } from "@nextui-org/react";
 import React from "react";
 import { useFormState } from "react-dom";
@@ -28,13 +29,22 @@ export default function TopicCreateForm() {
               label="Name"
               labelPlacement="outside"
               placeholder="Name"
+              isInvalid={!!formState.errors.name}
+              errorMessage={formState.errors.name?.join(", ")}
             />
             <Textarea
               name="description"
               label="Description"
               labelPlacement="outside"
               placeholder="Description"
+              isInvalid={!!formState.errors.description}
+              errorMessage={formState.errors.description?.join(", ")}
             />
+            {formState.errors && (
+              <div className="text-red-700">
+                {formState.errors._form?.join(", ")}
+              </div>
+            )}
             <Button type="submit">Create Topic</Button>
           </div>
         </form>
