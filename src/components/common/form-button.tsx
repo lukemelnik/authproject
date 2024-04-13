@@ -9,5 +9,9 @@ export default function FormButton({
   children: React.ReactNode;
 }) {
   const { pending } = useFormStatus();
-  return <Button type="submit">{children}</Button>;
+  return (
+    <Button type="submit" isLoading={pending}>
+      {children}
+    </Button>
+  );
 }

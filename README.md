@@ -1,6 +1,6 @@
-## Auth Project (Full-stack reddit clone using NextJs, Typescript, Prisma, zod, Tailwind & NextUI Component Library)
+# Auth Project (Full-stack reddit clone using NextJs, Typescript, Prisma, zod, Tailwind & NextUI Component Library)
 
-# Takeaways:
+## Takeaways:
 
 1. Caching: by default Next tries to deliver a static page from the cache. After updating page information with a server action you will likely have to revaildate. It's also possible to revaliadate on a timer for pages where constant updates aren't critical (in this case a home page delivering a list of topics). By default all dynamic routes will be dynamic.
 
@@ -102,3 +102,5 @@ export async function createTopic(
   return { errors: {} };
 }
 ```
+
+4. useFormStatus to create a loading state for the form. NOTE: hook has to be used in a child component. In this case it was embedded in the submit button for the form & then used to trigger a loading icon in the button.

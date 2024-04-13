@@ -12,6 +12,7 @@ import {
 } from "@nextui-org/react";
 import React from "react";
 import { useFormState } from "react-dom";
+import FormButton from "../common/form-button";
 
 export default function TopicCreateForm() {
   const [formState, action] = useFormState(createTopic, { errors: {} });
@@ -42,10 +43,11 @@ export default function TopicCreateForm() {
             />
             {formState.errors && (
               <div className="text-red-700">
+                {/* errors come in as an array so you have to join them to see all */}
                 {formState.errors._form?.join(", ")}
               </div>
             )}
-            <Button type="submit">Create Topic</Button>
+            <FormButton>Create Topic</FormButton>
           </div>
         </form>
       </PopoverContent>

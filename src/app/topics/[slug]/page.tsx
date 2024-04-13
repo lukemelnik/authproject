@@ -4,19 +4,19 @@ import db from "@/db";
 import React from "react";
 
 // MUST remember to make these async when fetching data
-export default async function TopicShowPage() {
-  const topics = await db.topic.findMany();
+export default async function TopicShowPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const topic = await db.topic.findUnique({
+    where: {
+      slug: params.slug,
+    },
+  });
+  if (!topic) {
+    throw new Error("Topic not found!");
+  }
 
-  if (!topics) return <div>There are no topics to display</div>;
-
-  return (
-    <div>
-      topics show page
-      <ul>
-        {topics.map((topic) => {
-          return <li key={topic.id}>{topic.slug}</li>;
-        })}
-      </ul>
-    </div>
-  );
+  return <div>{topic.slug}</div>;
 }
