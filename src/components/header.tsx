@@ -7,8 +7,8 @@ import {
   NavbarContent,
   NavbarItem,
 } from "@nextui-org/react";
-
-export default async function Header() {
+const dynamic = "force-dynamic";
+export default function Header() {
   return (
     <div>
       <Navbar className="shadow mb-6">

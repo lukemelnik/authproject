@@ -104,3 +104,15 @@ export async function createTopic(
 ```
 
 4. useFormStatus to create a loading state for the form. NOTE: hook has to be used in a child component. In this case it was embedded in the submit button for the form & then used to trigger a loading icon in the button.
+
+5. Combined the auth provider and nextUI provider into a single component and then wrap the whole app in the main layout:
+
+```js
+export default function Providers({ children }: ProvidersProps) {
+  return (
+    <SessionProvider>
+      <NextUIProvider>{children}</NextUIProvider>
+    </SessionProvider>
+  );
+}
+```

@@ -25,11 +25,13 @@ export default function HeaderAuth() {
           <Avatar src={session.data?.user.image || ""} />
         </PopoverTrigger>
         <PopoverContent>
-          <form action={signOut} className="p-4">
-            <Button type="submit" color="primary" variant="flat">
-              Sign Out
-            </Button>
-          </form>
+          <div className="p-4">
+            <form action={signOut}>
+              <Button type="submit" color="primary" variant="flat">
+                Sign Out
+              </Button>
+            </form>
+          </div>
         </PopoverContent>
       </Popover>
     );
@@ -40,6 +42,13 @@ export default function HeaderAuth() {
           <form action={signIn}>
             <Button type="submit" color="secondary" variant="bordered">
               Sign In
+            </Button>
+          </form>
+        </NavbarItem>
+        <NavbarItem>
+          <form action={signIn}>
+            <Button type="submit" color="secondary" variant="flat">
+              Sign Up
             </Button>
           </form>
         </NavbarItem>
