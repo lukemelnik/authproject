@@ -116,3 +116,5 @@ export default function Providers({ children }: ProvidersProps) {
   );
 }
 ```
+
+6. Created a more reusable <PostList/> component by defining separate query funcions, then passing them down from the parent component depending on where it's displayed. That way we can grab posts from a variety of topics on the home page, and only specific posts on the individual topic page.
