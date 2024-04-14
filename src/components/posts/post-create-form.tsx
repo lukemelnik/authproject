@@ -18,7 +18,7 @@ export default function PostCreateForm({ slug }: { slug: string }) {
   });
 
   return (
-    <Popover placement="left">
+    <Popover placement="left" backdrop="opaque">
       <PopoverTrigger>
         <Button color="primary">Create a Post</Button>
       </PopoverTrigger>
