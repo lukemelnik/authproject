@@ -3,6 +3,7 @@
 import PostCreateForm from "@/components/posts/post-create-form";
 import TopicCreateForm from "@/components/topics/topic-create-form";
 import db from "@/db";
+import { Post } from "@prisma/client";
 import React from "react";
 
 // MUST remember to make these async when fetching data
@@ -27,6 +28,10 @@ export default async function TopicShowPage({
       </div>
       <div>
         <PostCreateForm slug={params.slug} />
+      </div>
+      <div>
+        {topic.posts &&
+          topic.posts.map((post: Post) => <li key={post.id}>{post.title}</li>)}
       </div>
     </div>
   );
