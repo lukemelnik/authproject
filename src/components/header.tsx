@@ -8,6 +8,7 @@ import {
   NavbarItem,
 } from "@nextui-org/react";
 import SearchInput from "./common/search-input";
+import { Suspense } from "react";
 const dynamic = "force-dynamic";
 export default function Header() {
   return (
@@ -20,7 +21,9 @@ export default function Header() {
         </NavbarBrand>
         <NavbarContent justify="center">
           <NavbarItem>
-            <SearchInput />
+            <Suspense>
+              <SearchInput />
+            </Suspense>
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">

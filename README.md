@@ -125,3 +125,5 @@ export default function Providers({ children }: ProvidersProps) {
 - Each `<CommentShow />` also recieves the fetched comments, and finds its children by filtering the comments where parentId === commentId
 - `<CommentShow />` then renders the data from the parent comment, another input for replys, and all of the children comments underneath.
 - that recursive property continues so that replys to children comments are rendered the same way
+
+8. Any component that uses the useSearchParams() hook needs to be wrapped in `<Suspense>` or it won't work. No need to add a fallback prop.

@@ -20,7 +20,7 @@ export function fetchPostsByTopicsSlug(slug: string): Promise<PostWithData[]> {
   });
 }
 
-export function fetchPostsBySearchType(term: string): Promise<PostWithData[]> {
+export function fetchPostsBySearchTerm(term: string): Promise<PostWithData[]> {
   return db.post.findMany({
     include: {
       topic: { select: { slug: true } },
@@ -28,7 +28,11 @@ export function fetchPostsBySearchType(term: string): Promise<PostWithData[]> {
       _count: { select: { comments: true } },
     },
     where: {
-      OR: [{ title: { contains: term } }, { content: { contains: term } }],
+      OR: [
+        { title: { contains: term } },
+        { content: { contains: term } },
+        { comments: { some: { content: { contains: term } } } },
+      ],
     },
   });
 }
