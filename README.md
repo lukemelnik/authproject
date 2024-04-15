@@ -117,11 +117,11 @@ export default function Providers({ children }: ProvidersProps) {
 }
 ```
 
-6. Created a more reusable <PostList/> component by defining separate query funcions, then passing them down from the parent component depending on where it's displayed. That way we can grab posts from a variety of topics on the home page, and only specific posts on the individual topic page.
+6. Created a more reusable `<PostList/>` component by defining separate query funcions, then passing them down from the parent component depending on where it's displayed. That way we can grab posts from a variety of topics on the home page, and only specific posts on the individual topic page.
 
 7. Recursive components:
 
-- first you render the top level comments (which have no parentId) as a list of comments <CommentList/>. It receives a custom query function that fetches comments based on the postId.
-- Each <CommentShow /> also recieves the fetched comments, and finds its children by filtering the comments where parentId === commentId
-- <CommentShow /> then renders the data from the parent comment, another input for replys, and all of the children comments underneath.
+- first you render the top level comments (which have no parentId) as a list of comments `<CommentList/>`. It receives a custom query function that fetches comments based on the postId.
+- Each `<CommentShow />` also recieves the fetched comments, and finds its children by filtering the comments where parentId === commentId
+- `<CommentShow />` then renders the data from the parent comment, another input for replys, and all of the children comments underneath.
 - that recursive property continues so that replys to children comments are rendered the same way
