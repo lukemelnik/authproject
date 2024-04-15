@@ -8,7 +8,7 @@ import db from "@/db";
 import { fetchCommentsByPostId } from "@/db/queries/comments";
 import paths from "@/paths";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 
 export default async function PostShowPage({
   params,
@@ -23,9 +23,20 @@ export default async function PostShowPage({
       >
         {"<"} Go back to <span className="font-bold">{params.slug}</span>
       </Link>
-      <PostShow postId={params.postId} />
+      <Suspense fallback={<PostShowLoader />}>
+        <PostShow postId={params.postId} />
+      </Suspense>
       <CommentCreateForm postId={params.postId} startOpen={true} />
       <CommentList fetchData={() => fetchCommentsByPostId(params.postId)} />
+    </div>
+  );
+}
+
+function PostShowLoader() {
+  return (
+    <div className="p-2">
+      <div className="bg-gray-500 w-20 h-10 mb-2 rounded animate-pulse"></div>
+      <div className="bg-gray-500 w-full h-16 mb-2 rounded animate-pulse"></div>
     </div>
   );
 }

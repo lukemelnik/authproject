@@ -4,7 +4,7 @@
 
 1. Caching: by default Next tries to deliver a static page from the cache. After updating page information with a server action you will likely have to revaildate. It's also possible to revaliadate on a timer for pages where constant updates aren't critical (in this case a home page delivering a list of topics). By default all dynamic routes will be dynamic.
 
-For this project we moved the header into a separate client component because it was causing the entire home page to be dynamic (due to the fact that the auth was modifying cookies). That allowed it to make requests to the backend using useSession instead.
+For this project we moved the header into a separate client co mponent because it was causing the entire home page to be dynamic (due to the fact that the auth was modifying cookies). That allowed it to make requests to the backend using useSession instead.
 
 2. Advantageous to create a paths helper in case file paths change in the future:
 
