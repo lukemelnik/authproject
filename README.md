@@ -1,4 +1,4 @@
-# Auth Project (Full-stack reddit clone using NextJs, Typescript, Prisma, zod, Tailwind & NextUI Component Library)
+# Auth Project (Full-stack reddit clone using NextJs, Typescript, Prisma, zod, Tailwind & NextUI Component Library from Stephen Grider Course)
 
 ## Takeaways:
 
